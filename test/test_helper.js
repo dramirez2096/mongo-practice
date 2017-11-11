@@ -8,3 +8,9 @@ mongoose.connection
     .on('error', (error) => {
         console.warn('Warning', error); //run this function if mongoose does not connect
     });
+
+    beforeEach ((done) => {
+        mongoose.connection.collections.users.drop(() => {
+            done(); //ready to run the next test
+        });
+    });//hook before each test
