@@ -1,5 +1,7 @@
 const mongoose = require('mongoose'); //allows us to use Mongoose
 
+mongoose.Promise = global.Promise; //use Promise library to create promises
+
 mongoose.connect('mongodb://localhost/users_test', {
     useMongoClient: true,
 }); //mongoose connects to local database "users_test"
