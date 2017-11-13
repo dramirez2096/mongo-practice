@@ -19,8 +19,13 @@ describe('deleting a user', () => {
             });
     });
 
-    it('class method remove', () => {
-
+    it('class method remove', (done) => { //removes several records at once
+        User.remove({ name:'Joe' })
+        .then(() => User.findOne({ name:'Joe'})) //checks to see if joe still exists
+        .then((user) => {
+            assert(user === null); // there should be no user
+            done();
+        });
     });
 
     it('class methond findOneAndRemove', () => {
