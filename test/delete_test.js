@@ -28,8 +28,13 @@ describe('deleting a user', () => {
         });
     });
 
-    it('class methond findOneAndRemove', () => {
-
+    it('class methond findOneAndRemove', (done) => {
+        User.findOneAndRemove({ name:'Joe' }) //finds user with name of Joe
+        .then(() => User.findOne({ name:'Joe'})) //checks to see if joe still exists
+        .then((user) => {
+            assert(user === null); // there should be no user
+            done();
+        });
     });
 
     it('class method findByIdAndRemove', () => {
