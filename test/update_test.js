@@ -30,14 +30,14 @@ describe('Updating records', () => {
     });
 
     it('model class update', (done) => {
-        assertName (User.update ({ name:'Joe' }, {name:'david' }), done);
+        assertName (User.update ({ name:'Joe' }, {name:'David' }), done);
     });
 
-    it('findOneAndUpdate', () => {
-
+    it('findOneAndUpdate', (done) => {
+        assertName(User.findOneAndUpdate({name:'Joe'}, {name:'David'}), done);
     });
 
-    it('findByIdAndUpdate', () => {
-
+    it('findByIdAndUpdate', (done) => {
+        assertName(User.findByIdAndUpdate(joe._id, {name:'David'}), done);
     });
 });
