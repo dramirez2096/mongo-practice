@@ -37,7 +37,12 @@ describe('deleting a user', () => {
         });
     });
 
-    it('class method findByIdAndRemove', () => {
-
+    it('class method findByIdAndRemove', (done) => {
+        User.findByIdAndRemove(joe._id) //deletes user with same id as joe
+        .then(() => User.findOne({ name:'Joe'})) //checks to see if joe still exists
+        .then((user) => {
+            assert(user === null); // there should be no user
+            done();
+        });
     });
 });
