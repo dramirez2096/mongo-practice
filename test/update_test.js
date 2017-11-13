@@ -28,4 +28,16 @@ describe('Updating records', () => {
     it('model instance update test', (done) => { //only updates one instance
         assertName(joe.update({name: 'David'}), done); //update joe's name to david
     });
+
+    it('model class update', (done) => {
+        assertName (User.update ({ name:'Joe' }, {name:'david' }), done);
+    });
+
+    it('findOneAndUpdate', () => {
+
+    });
+
+    it('findByIdAndUpdate', () => {
+
+    });
 });
